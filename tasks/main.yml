@@ -1,0 +1,31 @@
+---
+# tasks file for ansible-role-backup-file
+
+#- name: find exit code of crontab -l
+#  shell: crontab -l
+#  register: crontabout
+#  ignore_errors: yes
+
+#- debug: 
+#    msg="{{ crontabout.rc }}"
+
+- name: creates backup directory
+  file: path={{ backup_directory }} state=directory
+
+- name: check whether cronjob_backup already exists
+  command: bash -c "crontab -u {{ ansible_ssh_user }} -l | grep '{{ cronjob_backup }}'"
+  register: cronjobexists
+  ignore_errors: yes
+
+- name: pipe cronjob_backup to crontab
+  shell: (crontab -l ; echo '{{ cronjob_backup }}') | crontab -
+  when: cronjobexists.rc == 1
+
+- name: check whether cronjob_delete_old already exists
+  command: bash -c "crontab -u {{ ansible_ssh_user }} -l | grep -F '{{ cronjob_delete_old }}'"
+  register: cronjobexists1
+  ignore_errors: yes
+
+- name: pipe cronjob_delete_old to crontab
+  shell: (crontab -l ; echo '{{ cronjob_delete_old }}') | crontab -
+  when: cronjobexists1.rc == 1
