@@ -1,3 +1,7 @@
+[![Ansible Role](https://img.shields.io/ansible/role/18529.svg)](https://galaxy.ansible.com/xtrinch/backup-file/)
+[![Build Status](https://travis-ci.org/xtrinch/ansible-role-backup-file.svg?branch=master)](https://travis-ci.org/xtrinch/ansible-role-backup-file)
+
+
 Role Name
 =========
 
