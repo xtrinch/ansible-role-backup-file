@@ -24,7 +24,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: xtrinch.kiosk, 
+         - { role: xtrinch.backup-file, 
                 directory: "/home/{{ ansible_ssh_user}}",
                 filename: "backMeUp.test",
                 backup_directory: "/home/{{ansible_ssh_user}}/backups" }
