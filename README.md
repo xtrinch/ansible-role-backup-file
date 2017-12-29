@@ -1,7 +1,7 @@
 Role Name
 =========
 
-Create entry in user crontab for backuping a file defined with role variables `directory` and `filename` to directory defined with `backup_directory`, and deleting entries older than 7 days
+Create entry in user crontab for backuping a file every n minutes defined with role variables `directory` and `filename` to directory defined with `backup_directory` with timeframe defined with `backup_minutes`, and deleting entries older than 7 days
 
 Role Variables
 --------------
