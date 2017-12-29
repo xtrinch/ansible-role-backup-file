@@ -27,8 +27,6 @@ Example Playbook
     - hosts: servers
       roles:
          - { role: xtrinch.kiosk, 
-                cronjob_backup: '*/5 * * * * cp {{ directory }}/{{ filename }} {{ backup_directory }}/{{ filename }}`date +\%d\%m\%y\%H\%M`.bak > /dev/null',
-                cronjob_delete_old: '*/5 * * * * find /home/{{ ansible_ssh_user }}/backups -mtime +7 -exec rm -f {} \;',
                 directory: "/home/{{ ansible_ssh_user}}",
                 filename: "backMeUp.test",
                 backup_directory: "/home/{{ansible_ssh_user}}/backups" }
