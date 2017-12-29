@@ -14,8 +14,9 @@ Should be overridden:
     
 Only override if necessary:
 
-    cronjob_backup: '*/5 * * * * cp {{ directory }}/{{ filename }} {{ backup_directory }}/{{ filename }}`date +\%d\%m\%y\%H\%M`.bak > /dev/null'
-    cronjob_delete_old: '*/5 * * * * find /home/{{ ansible_ssh_user }}/backups -mtime +7 -exec rm -f {} \;'
+    backup_minutes: 5
+    cronjob_backup: '*/{{ backup_minutes }} * * * * cp {{ directory }}/{{ filename }} {{ backup_directory }}/{{ filename }}`date +\%d\%m\%y\%H\%M`.bak > /dev/null'
+    cronjob_delete_old: '*/{{ backup_minutes }} * * * * find /home/{{ ansible_ssh_user }}/backups -mtime +7 -exec rm -f {} \;'
 
 Example Playbook
 ----------------
