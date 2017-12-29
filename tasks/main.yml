@@ -13,7 +13,7 @@
   file: path={{ backup_directory }} state=directory
 
 - name: check whether cronjob_backup already exists
-  command: bash -c "crontab -u {{ ansible_ssh_user }} -l | grep '{{ cronjob_backup }}'"
+  command: bash -c "crontab -u {{ ansible_ssh_user }} -l | grep -F '{{ cronjob_backup }}'"
   register: cronjobexists
   ignore_errors: yes
 
